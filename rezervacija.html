@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rezervacija termina — Deliya Barbershop</title>
+<meta name="description" content="Rezerviši termin u Deliya Barbershop, Banja Luka — izaberi uslugu, dan i vrijeme.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230E0E0E'/%3E%3Ctext x='32' y='44' font-family='Arial Black,Arial' font-weight='900' font-size='36' text-anchor='middle' fill='%23C8A46A'%3ED%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0E0E0E;--panel:#161514;--line:#2A2826;--text:#F2EFE9;--muted:#B5B0A7;--dim:#8F8A82;--accent:#C8A46A}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Manrope',system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--text)}a:hover{color:var(--accent)}
+.display{font-family:'Syne',sans-serif}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+
+header.site{max-width:1280px;margin:0 auto;padding:32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line)}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:36px;line-height:1;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--text);display:inline-flex;align-items:center;min-height:44px}
+.back{text-decoration:none;font-size:16px;font-weight:500;display:inline-flex;align-items:center;min-height:44px}
+
+main{max-width:1280px;margin:0 auto;padding:72px 32px 112px}
+.eyebrow{margin:0 0 16px;font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600}
+h1{margin:0 0 56px;font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(40px,6vw,72px);line-height:1.05;letter-spacing:-.02em}
+.layout{display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start}
+.steps{flex:999 1 560px;min-width:0;display:flex;flex-direction:column;gap:56px}
+.step{display:flex;flex-direction:column;gap:20px}
+.step h2{margin:0;font-family:'Syne',sans-serif;font-size:24px;font-weight:700}
+.step h2 span{color:var(--accent)}
+
+.opt{background:var(--panel);border:1px solid var(--line);border-radius:6px;color:var(--text);font:inherit;cursor:pointer;min-height:44px;transition:border-color .15s,background .15s}
+.opt:hover{border-color:#57534D}
+.opt[aria-pressed="true"]{background:#221D15;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.opt:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.services{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.services .opt{text-align:left;padding:18px 20px;display:flex;flex-direction:column;gap:4px}
+.services .name{font-weight:600;font-size:17px}
+.services .dur{font-size:14px;color:var(--muted)}
+.services .price{font-family:'Syne',sans-serif;font-weight:700;font-size:20px;color:var(--accent)}
+
+.days{display:flex;flex-wrap:wrap;gap:10px}
+.days .opt{padding:12px 18px;min-width:88px;min-height:64px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.days .dow{font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.days .date{font-family:'Syne',sans-serif;font-weight:700;font-size:20px}
+.note-small{margin:0;font-size:14px;color:var(--dim)}
+
+.times{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:10px}
+.times .opt{padding:12px 8px;min-height:48px;font-weight:600}
+.times .opt:disabled{background:transparent;border-color:#1F1D1B;color:#57534D;cursor:not-allowed;text-decoration:line-through}
+.empty{margin:0;padding:20px;border:1px dashed var(--line);border-radius:6px;color:var(--muted)}
+
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+label{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:var(--muted)}
+input,textarea{background:var(--panel);border:1px solid var(--line);border-radius:6px;color:var(--text);font:inherit;font-size:17px;font-weight:400;padding:14px 16px;min-height:52px}
+textarea{resize:vertical}
+input:focus,textarea:focus{outline:none;border-color:var(--accent)}
+
+aside{flex:1 1 320px;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:32px;display:flex;flex-direction:column;gap:20px}
+aside h2{margin:0;font-family:'Syne',sans-serif;font-size:22px;font-weight:700}
+.rows{display:flex;flex-direction:column;gap:14px;font-size:16px}
+.row{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:12px}
+.row span:first-child{color:var(--dim)}
+.row span:last-child{text-align:right;font-weight:600}
+.row.total{border:0;padding:0;align-items:baseline}
+.row.total span:last-child{font-family:'Syne',sans-serif;font-size:28px;font-weight:700;color:var(--accent)}
+.submit{border:0;border-radius:999px;padding:18px 28px;min-height:56px;font:inherit;font-weight:600;font-size:17px;background:var(--accent);color:var(--bg);cursor:pointer}
+.submit:disabled{background:var(--line);color:var(--dim);cursor:not-allowed}
+.hint{margin:0;font-size:14px;color:var(--dim)}
+
+.done{max-width:720px;margin:0 auto;padding:112px 32px 160px;display:flex;flex-direction:column;align-items:flex-start;gap:24px}
+.done h1{margin:0;font-size:clamp(40px,6vw,64px)}
+.done p{margin:0;font-size:19px;color:var(--muted)}
+.done .box{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:24px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;font-size:16px}
+.done .box span:last-child{font-family:'Syne',sans-serif;font-weight:700;color:var(--accent)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.btn{text-decoration:none;padding:16px 32px;border-radius:999px;font:inherit;font-weight:600;font-size:16px;min-height:44px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.btn.primary{background:var(--accent);color:var(--bg);border:0}
+.btn.primary:hover{color:var(--bg)}
+.btn.ghost{background:transparent;border:1px solid var(--text);color:var(--text)}
+[hidden]{display:none !important}
+
+@media (max-width:640px){
+header.site{padding:20px}
+.logo{font-size:26px}
+.back{font-size:15px}
+main{padding:40px 20px 72px}
+h1{margin-bottom:32px}
+.layout{gap:40px}
+.steps{gap:44px}
+aside{padding:24px}
+.done{padding:72px 20px 112px}
+.actions .btn{flex:1 1 100%}
+}
+</style>
+</head>
+<body>
+
+<header class="site">
+<a class="logo" href="index.html" aria-label="Deliya — početna">Deliya</a>
+<a class="back" href="index.html">← Nazad na početnu</a>
+</header>
+
+<main id="form-view">
+<p class="eyebrow">Online rezervacija</p>
+<h1>Zakaži svoj termin.</h1>
+
+<div class="layout">
+<div class="steps">
+
+<section class="step" aria-labelledby="s1">
+<h2 id="s1"><span>01</span> Izaberi uslugu</h2>
+<div class="services" id="services"></div>
+</section>
+
+<section class="step" aria-labelledby="s2">
+<h2 id="s2"><span>02</span> Izaberi dan</h2>
+<div class="days" id="days"></div>
+<p class="note-small">Nedjeljom ne radimo.</p>
+</section>
+
+<section class="step" aria-labelledby="s3">
+<h2 id="s3"><span>03</span> Izaberi vrijeme</h2>
+<p class="empty" id="no-day">Prvo izaberi dan, pa ćeš ovdje vidjeti slobodne termine.</p>
+<div class="times" id="times" hidden></div>
+</section>
+
+<section class="step" aria-labelledby="s4">
+<h2 id="s4"><span>04</span> Tvoji podaci</h2>
+<div class="fields">
+<label>Ime i prezime
+<input type="text" id="name" placeholder="npr. Marko Marković" autocomplete="name">
+</label>
+<label>Broj telefona
+<input type="tel" id="phone" placeholder="06x xxx xxx" autocomplete="tel">
+</label>
+</div>
+<label>Napomena (nije obavezno)
+<textarea id="note" rows="3" placeholder="npr. želim kratko sa strane, duže gore"></textarea>
+</label>
+</section>
+</div>
+
+<aside aria-label="Pregled rezervacije">
+<h2>Tvoja rezervacija</h2>
+<div class="rows">
+<div class="row"><span>Usluga</span><span id="sum-service">—</span></div>
+<div class="row"><span>Dan</span><span id="sum-day">—</span></div>
+<div class="row"><span>Vrijeme</span><span id="sum-time">—</span></div>
+<div class="row total"><span>Cijena</span><span id="sum-price">—</span></div>
+</div>
+<button type="button" class="submit" id="submit" disabled>Potvrdi rezervaciju</button>
+<p class="hint" id="hint" aria-live="polite">Izaberi uslugu da nastaviš.</p>
+<p class="hint">Radije zoveš? <a href="tel:+38765293144">065 293 144</a></p>
+</aside>
+</div>
+</main>
+
+<main class="done" id="done-view" hidden>
+<svg role="img" aria-label="Uspješno" width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="34" stroke="#C8A46A" stroke-width="3"/><path d="M22 37 L32 47 L51 27" stroke="#C8A46A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<h1>Termin je rezervisan.</h1>
+<p id="done-text"></p>
+<div class="box"><span id="done-service"></span><span id="done-price"></span></div>
+<div class="actions">
+<a class="btn primary" href="index.html">Nazad na početnu</a>
+<button type="button" class="btn ghost" id="reset">Nova rezervacija</button>
+</div>
+</main>
+
+<script>
+(function () {
+  // ---- Podešavanja salona ----
+  var SERVICES = [
+    { id: 'sisanje', name: 'Muško šišanje', duration: '30 min', price: 15 },
+    { id: 'fade', name: 'Fade / skin fade', duration: '40 min', price: 20 },
+    { id: 'brada', name: 'Oblikovanje brade', duration: '20 min', price: 10 },
+    { id: 'combo', name: 'Šišanje + brada', duration: '60 min', price: 25 },
+    { id: 'britva', name: 'Brijanje britvom', duration: '30 min', price: 15 },
+    { id: 'djecije', name: 'Dječije šišanje (do 12 god.)', duration: '20 min', price: 10 }
+  ];
+  var OPEN_HOUR = 9;          // početak rada
+  var CLOSE_WEEKDAY = 20;     // pon–pet do
+  var CLOSE_SATURDAY = 15;    // subota do
+  var DAYS_AHEAD = 10;        // koliko radnih dana nudimo
+
+  var DOW = ['Ned', 'Pon', 'Uto', 'Sri', 'Čet', 'Pet', 'Sub'];
+  var DOW_LONG = ['nedjelja', 'ponedjeljak', 'utorak', 'srijeda', 'četvrtak', 'petak', 'subota'];
+
+  var state = { svc: null, day: null, time: null };
+  var $ = function (id) { return document.getElementById(id); };
+
+  // ---- Dani ----
+  var now = new Date();
+  var days = [];
+  for (var i = 0; days.length < DAYS_AHEAD && i < 21; i++) {
+    var d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i);
+    if (d.getDay() === 0) continue;
+    var label = d.getDate() + '.' + (d.getMonth() + 1) + '.';
+    days.push({
+      key: d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(),
+      dow: i === 0 ? 'Danas' : (i === 1 ? 'Sutra' : DOW[d.getDay()]),
+      date: label,
+      long: DOW_LONG[d.getDay()] + ', ' + label,
+      weekday: d.getDay(),
+      isToday: i === 0
+    });
+  }
+
+  function button(cls, html, onClick) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'opt ' + (cls || '');
+    b.innerHTML = html;
+    b.setAttribute('aria-pressed', 'false');
+    b.addEventListener('click', onClick);
+    return b;
+  }
+
+  // ---- Usluge ----
+  SERVICES.forEach(function (s) {
+    var b = button('', '<span class="name">' + s.name + '</span><span class="dur">' + s.duration + '</span><span class="price">' + s.price + ' KM</span>', function () {
+      state.svc = s.id; update();
+    });
+    b.dataset.id = s.id;
+    $('services').appendChild(b);
+  });
+
+  // ---- Dani ----
+  days.forEach(function (d) {
+    var b = button('', '<span class="dow">' + d.dow + '</span><span class="date">' + d.date + '</span>', function () {
+      state.day = d.key; state.time = null; renderTimes(); update();
+    });
+    b.dataset.id = d.key;
+    $('days').appendChild(b);
+  });
+
+  // ---- Termini ----
+  function renderTimes() {
+    var box = $('times');
+    box.innerHTML = '';
+    var day = days.find(function (x) { return x.key === state.day; });
+    if (!day) { box.hidden = true; $('no-day').hidden = false; return; }
+    box.hidden = false; $('no-day').hidden = true;
+    var end = day.weekday === 6 ? CLOSE_SATURDAY : CLOSE_WEEKDAY;
+    var t = new Date();
+    var nowMin = t.getHours() * 60 + t.getMinutes() + 30;
+    for (var m = OPEN_HOUR * 60; m < end * 60; m += 30) {
+      (function (m) {
+        var label = Math.floor(m / 60) + ':' + (m % 60 === 0 ? '00' : '30');
+        var past = day.isToday && m < nowMin;
+        var b = button('', label, function () { if (!past) { state.time = label; update(); } });
+        b.dataset.id = label;
+        if (past) { b.disabled = true; b.setAttribute('aria-label', label + ' (prošlo)'); }
+        box.appendChild(b);
+      })(m);
+    }
+  }
+
+  // ---- Stanje i pregled ----
+  function update() {
+    ['services', 'days', 'times'].forEach(function (id) {
+      var key = id === 'services' ? state.svc : (id === 'days' ? state.day : state.time);
+      Array.prototype.forEach.call($(id).children, function (b) {
+        b.setAttribute('aria-pressed', b.dataset.id === key ? 'true' : 'false');
+      });
+    });
+    var svc = SERVICES.find(function (s) { return s.id === state.svc; });
+    var day = days.find(function (d) { return d.key === state.day; });
+    var name = $('name').value.trim();
+    var digits = $('phone').value.replace(/\D/g, '');
+
+    $('sum-service').textContent = svc ? svc.name : '—';
+    $('sum-price').textContent = svc ? svc.price + ' KM' : '—';
+    $('sum-day').textContent = day ? day.long : '—';
+    $('sum-time').textContent = state.time || '—';
+
+    var hint = 'Sve je spremno. Klikni „Potvrdi rezervaciju“.';
+    if (!svc) hint = 'Izaberi uslugu da nastaviš.';
+    else if (!day) hint = 'Izaberi dan.';
+    else if (!state.time) hint = 'Izaberi vrijeme.';
+    else if (name.length <= 1) hint = 'Upiši svoje ime.';
+    else if (digits.length < 6) hint = 'Upiši broj telefona.';
+    $('hint').textContent = hint;
+    $('submit').disabled = !(svc && day && state.time && name.length > 1 && digits.length >= 6);
+  }
+
+  ['name', 'phone', 'note'].forEach(function (id) { $(id).addEventListener('input', update); });
+
+  // ---- Potvrda ----
+  // NAPOMENA: ovo je samo prikaz. Da bi rezervacija stvarno stizala do salona,
+  // ovdje treba poslati podatke na email/servis (npr. Formspree, EmailJS, Google Forms).
+  $('submit').addEventListener('click', function () {
+    var svc = SERVICES.find(function (s) { return s.id === state.svc; });
+    var day = days.find(function (d) { return d.key === state.day; });
+    $('done-text').textContent = 'Hvala, ' + $('name').value.trim() + '. Vidimo se ' + day.long + ' u ' + state.time +
+      ' na adresi Slobodana Kusturica 13. Javićemo ti se porukom na ' + $('phone').value.trim() + ' da potvrdimo termin.';
+    $('done-service').textContent = svc.name;
+    $('done-price').textContent = svc.price + ' KM';
+    $('form-view').hidden = true;
+    $('done-view').hidden = false;
+    window.scrollTo(0, 0);
+  });
+
+  $('reset').addEventListener('click', function () {
+    state = { svc: null, day: null, time: null };
+    $('note').value = '';
+    renderTimes(); update();
+    $('done-view').hidden = true;
+    $('form-view').hidden = false;
+    window.scrollTo(0, 0);
+  });
+
+  update();
+})();
+</script>
+</body>
+</html>
